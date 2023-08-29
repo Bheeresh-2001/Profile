@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMUBS prj sorce code</title>
+    <style>
+         .prj{
+            width: 100%;
+            text-align: justify;
+            background-color: aquamarine;
+        }
+        .prj p{
+            font-size: 30px;
+        }
+        .prj h1{
+            text-align: center;
+        }
+        pre{
+            text-align:justify;
+        }
+        .box{
+            border: 2px black solid;
+            width: 45%;
+            height: 585vh;
+            font-size: 20px;
+        }
+        .tq{
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="prj">
+        <h1><q><u>Home Automaton Using Brain Signal</u></q></h1>
+        <h2><u>Project Source Code</u></h2>
+        <center>
+            <div class="box">
+                <h1><u>Main Code</u></h1>
+                <pre>
+    #define LED 13
+    #define BAUDRATE 9600
+    #define DEBUGOUTPUT 0
+    #define GREENLED 5
+    #define YELLOWLED 8
+    #define REDLED 11
+    #define powercontrol 10
+    #define relayPin 7
+    // checksum variables
+    byte generatedChecksum = 0;
+    byte checksum = 0;
+    int payloadLength = 0;
+    byte payloadData[64] = {0};
+    byte poorQuality = 0;
+    byte attention = 0;
+    byte meditation = 0;
+    // system variables
+    long lastReceivedPacket = 0;
+    boolean bigPacket = false;
+    void setup()
+    {
+    pinMode(GREENLED, OUTPUT);
+    pinMode(YELLOWLED, OUTPUT);
+    pinMode(REDLED, OUTPUT);
+    pinMode(LED, OUTPUT);
+    pinMode(PIN, OUTPUT);
+    pinMode(relayPin,OUTPUT); 
+    Serial.begin(BAUDRATE); 
+    }
+    byte ReadOneByte()
+    {
+    int ByteRead;
+    while(!Serial.available());
+    ByteRead = Serial.read();
+    #if DEBUGOUTPUT
+    Serial.print((char)ByteRead);
+    #endif
+    return ByteRead;
+    }
+    void loop()
+    { 
+    digitalWrite(PIN,HIGH);
+    if(ReadOneByte( ) == 170)
+    {
+    if(ReadOneByte( ) == 170)
+    {
+    payloadLength = ReadOneByte( );
+    if(payloadLength > 169) 
+    return;
+    generatedChecksum = 0;
+    for(int i = 0; i < payloadLength; i++)
+    {
+    payloadData[i] = ReadOneByte( ); 
+    generatedChecksum += payloadData[i];
+    }
+    checksum = ReadOneByte( );
+    generatedChecksum = 255 - generatedChecksum; 
+    if(checksum == generatedChecksum)
+    {
+    poorQuality = 200;
+    attention = 0;
+    meditation = 0;
+    for(int i = 0; i < payloadLength; i++)
+    {
+    switch (payloadData[i])
+    {
+    case 2:
+    i++;
+    poorQuality = payloadData[i];
+    bigPacket = true;
+    break;
+    case 4:
+    i++;
+    attention = payloadData[i];
+    break;
+    case 5:
+    i++;
+    meditation = payloadData[i];
+    break;
+    case 0x80:
+    i = i + 3;
+    break;
+    case 0x83:
+    i = i + 25;
+    break;
+    default:
+    break;
+    } 
+    } 
+    #if !DEBUGOUTPUT
+    if(bigPacket)
+    {
+    if(poorQuality == 0)
+    digitalWrite(LED, HIGH);
+    else
+    digitalWrite(LED, LOW);
+    Serial.print("PoorQuality: ");
+    Serial.print(poorQuality, DEC);
+    Serial.print(" Attention: ");
+    Serial.print(attention, DEC);
+    Serial.print(" Meditation: ");
+    Serial.print(meditation, DEC);
+    Serial.print(" Time since last packet: ");
+    Serial.print(millis( ) - lastReceivedPacket, DEC);
+    lastReceivedPacket = millis();
+    Serial.print("\n");
+    switch(attention / 10)
+    {
+    case 1:
+    digitalWrite(GREENLED, HIGH);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, LOW);
+    break;
+    case 2:
+    digitalWrite(GREENLED, HIGH);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, LOW);
+    break;
+    case 3:
+    digitalWrite(GREENLED, HIGH);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, LOW);
+    break;
+    case 4:
+    digitalWrite(GREENLED, LOW);
+    digitalWrite(YELLOWLED, HIGH);
+    digitalWrite(REDLED, LOW);
+    digitalWrite(relayPin,HIGH);
+    break;
+    case 5:
+    digitalWrite(GREENLED, LOW);
+    digitalWrite(YELLOWLED, HIGH);
+    digitalWrite(REDLED, LOW);
+    digitalWrite(relayPin,HIGH);
+    break;
+    case 6:
+    digitalWrite(GREENLED, LOW);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, HIGH);
+    digitalWrite(relayPin,LOW);
+    break;
+    case 7:
+    digitalWrite(GREENLED, LOW);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, HIGH);
+    digitalWrite(relayPin,LOW);
+    digitalWrite(PIN,LOW);
+    break;
+    case 8:
+    digitalWrite(GREENLED, LOW);
+    digitalWrite(YELLOWLED, LOW);
+    digitalWrite(REDLED, HIGH);
+    digitalWrite(relayPin,LOW);
+    digitalWrite(PIN,LOW);
+    break;
+    break;
+    return(loop);
+    }}
+    #endif
+    bigPacket = false;
+    }
+    else {
+    }}
+                </pre>
+
+            </div>
+        </center>
+    </div>
+    <marquee behavior="alteranate" direction="" class="tq">Thank You &hearts;&hearts;</marquee>
+</body>
+</html>

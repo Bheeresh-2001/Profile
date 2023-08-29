@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-project2</title>
+    <link rel="stylesheet" href="aprj2.css">
+    <style>
+        *{
+            margin: 2px;
+            line-height: 30px;
+            
+        }
+        .nav{
+            background-color: aquamarine;
+
+        }
+       .prj{
+        text-align: justify;
+        width: 100%;
+        font-size: 20px;
+        
+       }
+       h1{
+        background-color: yellowgreen;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            font-size: 50px;
+            text-align: center;
+       }
+       .block{
+        text-align: justify;
+        font-size: 20px;
+       }
+       .component{
+        font-size: 20px;
+       }
+       .com{
+        text-align: justify;
+        font-size: 20px;
+       }
+       .out{
+        font-size: 20px;
+       }
+       .conclusion{
+        font-size: 20px;
+       }
+       .tq{
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <h1><q><u>Home Automaton Using Brain Signal</u></q></h1>
+    <!-- <center> -->
+    <div class="prj">
+        
+        <h2><u>INTRODUCTION</u></h2>
+        <p>Main aim of this project is to help paralyzed and physically disabled people to control the home appliances using Electroencephalogram (EEG) signal, so they become independent in their daily life.
+        <br>The BCI is considered as a recent and unique transmission medium between the human brain and a computer.
+    <br>We know that a physically handicapped would be in short of a physical or sensory functionality. This is
+    deteriorating the interaction or no interaction at all with theirsurroundings. Thus, leading to considerable
+    inconvenience. Activities of normal people prove to be near impossible feats to them. A simple action
+    of switching on a light would be challenging for such individuals. Two methods of obtaining EEG
+    signals for a BCI exist: invasive and non-invasive EEG. In the non-invasive approach we just use an
+    external sensor for acquiring the brainwave signals. In the invasive EEG method, signals are captured
+    by electrodes surgically implanted within the depths of the brain.<br>A BCI is an AI arrangement that can identify a definite set of arrangements of brain signals in further
+    five consecutive stages: signal acquisition, preprocessing or signal enhancement, feature extraction,
+    classification, and the control interface. Non-invasive methodologies have successfully been used by
+    severely and partially paralyzed patients to reacquire basic forms of communication and to control
+    neuroprosthetics and wheelchairs. EEG signals are easily procured in a non-invasive manner through
+    electrodes placed on the scalp, for which that reason it is by far the most widespread recording modality.
+    This can be implemented further for car automation, door automation and even in aircrafts. Here only
+    attention level of the brain wave is taken for controlling of appliances. In future all the other waves can
+    be used for better results.
+</p>
+    <h2><u>PROBLEM STATEMENT</u></h2>
+    <p>* In medicinal perspective we found that stroke, epilepsy, brain injury, back bone injury and muscle injury
+        are the leading causes of disability affecting many people. These are serious causes of injury as they are
+        physically or mentally handicapped. In same manner aged people also need someone to complete their
+        routine tasks.<br>
+        * As per Census 2011, in India, out of the 121 Cr population, about 2.68 Cr individuals are disabled which
+        is 2.21% of the total population [Census, 2011]. In this figure when we talk about “development”. We
+        could not achieve this 100% due to this human disability so we need right path to improve their life and
+        efficiency.<br>
+        * The non-invasive method is used for a most variety of the applications to simplify human life, therefore
+        the BioAmp EXG Pill sensors for the non-invasive BCI technique are easy to wear on head and do not
+        need any type of surgery as it is compulsory in the invasive and partially invasive methods.</p>
+        <h2><u>OBJECTIVE AND SCOPE</u></h2>
+        <p>A BCI is an AI arrangement that can identify a definite set of arrangements of brain signals in further
+            five consecutive stages: signal acquisition, preprocessing or signal enhancement, feature extraction,
+            classification, and the control interface. Non-invasive methodologies have successfully been used by
+            severely and partially paralyzed patients to reacquire basic forms of communication and to control
+            neuroprosthetics and wheelchairs. EEG signals are easily procured in a non-invasive manner through
+            electrodes placed on the scalp, for which that reason it is by far the most widespread recording modality.<br>
+            This can be implemented further for car automation, door automation and even in aircrafts. Here only
+            attention level of the brain wave is taken for controlling of appliances. In future all the other waves can
+            be used for better results.</p>
+    </div>
+    </div>
+    <div class="block">
+        <h2><u>BLOCK DIAGRAM</u></h2>
+        <img src="block.JPG" alt="" style="margin-left: 65px;">
+        <p>The above signals are analysed by BioAMP EXG Pill the signal contain some noises, which are filtered
+            using, the filter present in BioAMP EXG Pill. The filtered signal of EEG Signal/Brain Signal consists
+            of Alpha, Beta, Theta and Delta which is a Raw Data. This Raw Data is transmited through Bluetooth
+            Transmitter. The transmitter Raw Data is collected using Bluetooth Receiver. The received data is
+            analysed and they are seperated based on the frequency. If the frequency matches then the respective
+            Home appliances are made ON, like (For Alpha Signal LED Blub, For Beta Signal Fan …,)
+            Now we are taking the EEG Signal data and giving this data as input to the Matlab and getting the
+            respective signal. The Matlab and Arduino are interfaced and signals are feed into Arduino, again based
+            on the signals respective Home appliance are made to ON.</p>
+    </div>
+    <div class="component">
+        <h2><u>COMPONENT REQUIRED</u></h2>
+        <h3>Head Band.<br>
+            TGAM Module.<br>
+            HC 05  Bluetooth.<br>
+            Arduino UNO. <br>
+            Relay.<br>
+            Bulbs</h3>
+            <h2><u>Head Band</u></h2>
+            <img src="head-band.JPG" alt="" style="margin-left: 300px;">
+            <h2>REFERENCE ELECTRODE</h2>
+            <p> The Head Band is use to collect the EEG signal that is generated from the brain and Process the signal using TGAM Module and transmit the Processed signal to Arduino Uno via Bluetooth.
+                The reference Electrode is clipped to the Ear.
+                Although the ear clip can be attached anywhere on the ear, literature suggests, that the outer portion of the  ear is the best placement option, since there is no nearby brain activity.</p>
+            <h2>MAIN ELECTRODE</h2>
+                <p>The brain signal is captured using Dry Electrode we are making use of Dry Electrode instead of Wet Electrode because as the gel which is applied dries the accuracy and efficiency drops so we are making use of Dry Electrode</p>
+    </div>
+    <div class="com">
+        <h2><u>COMPONENT ASSEMBLY</u></h2>
+        <img src="com-ass.jpeg" alt="" height="300px" style="margin-left: 370px;">
+        <p>The complete setup of  is shown in above Figure. To make the entire system portable, all the required components are mounted on a single board. 
+
+            For testing purposes 3 LEDs (Red, Yellow, and Green) are initially interfaced on the board. When the system is first switched on, the user has to mount the headband on his head and clip the secondary or the reference electrode to the ear. 
+            
+            Depending on the brain activity, the brain signals are captured and their values can be seen on the serial monitor of the Arduino Uno.</p>
+    </div>
+    <div class="out">
+        <h2><u>Low, Medium & High Attention</u></h2>
+        <img src="low.jpeg" alt="" width="400px" style="margin-right: 50px; margin-left: 50px;">
+        <img src="medium.jpeg" alt="" width="320px">
+        <img src="high.jpeg" alt="" width="370px" style="margin-left: 50px;">
+        <p>Image 1, indicate Low Attention, Image 2 indicate Medium Attention and Image 3 indicate High Attention. Image 1, When Attention level  ranges between 10-30, Red LED will turned ON and indicates that the person has low Attention so  the bulb in OFF State.
+ Image 2, When Attention level  range between 40-60, yellow led is turned ON and indicates that  the person has medium Attention, we are made the  bulb ON. 
+Image 3, When Attention level  range between 40-60, yellow led is turned ON and indicates that  the person has medium Attention, we are made the  bulb ON. 
+</p>
+    </div>
+    <div class="conclusion">
+        <h2><u>CONCLUSION</u></h2>
+        <p>A BCI controlled home automation system, capable of activating various home devices such as lights,
+            switches and ceiling fans, was presented.
+            The system received has the capacity to offer patients with extreme engine neuron issues an elective
+            method for correspondence and authority over their condition through applications for
+            neurorehabilitation of engine and psychological capacities.</p>
+    </div>
+    </nav>
+    <marquee behavior="alteranate" direction="" class="tq">Thank You &hearts;&hearts;</marquee>
+</body>
+</html>
