@@ -27,7 +27,7 @@ nav a:hover{
 
 /* HOME */
 .home{
-    height: 40vh;
+    height: 50vh;
     width: 100%;
     background-color: goldenrod;
 }
@@ -43,7 +43,7 @@ h1{
   font-size: 100px;
   position: absolute;
   left: 45%;
-  top: 200px;
+  top: 250px;
   animation: bounce 1s ease infinite alternate;
 }
 @keyframes bounce{
